@@ -11,6 +11,8 @@ namespace He_thong_ban_hang
 
         Products GetProductDetailsById(int proID);
 
+        List<Products> GetProductDetailsByName(string proName);
+
         ResponseModel SaveProduct(Products productModel);
 
         ResponseModel DeleteProduct(int productID);
@@ -49,6 +51,22 @@ namespace He_thong_ban_hang
             }
             return pro;
         }
+
+        public List<Products> GetProductDetailsByName(string proName)
+        {
+            List<Products> pro = new List<Products>();
+            try
+            {
+                pro = _context.Products.Where(p => p.ProductName == proName).ToList();
+                //pro = _context.Set<Products>().ToList().Where(e => e.ProductName ==);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return pro;
+        }
+
         public ResponseModel SaveProduct(Products productModel)
         {
             ResponseModel model = new ResponseModel();

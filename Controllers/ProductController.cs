@@ -39,9 +39,21 @@ namespace He_thong_ban_hang
         {
             try
             {
+                BaseRespone<Products> Test = new BaseRespone<Products>();
                 var products = _productService.GetProductDetailsById(id);
-                if (products == null) return NotFound();
-                return Ok(products);
+                if (products == null)
+                {
+                    Test.Type = "Error";
+                    Test.Message = "Không tồn tại sản phẩm";
+                    return Ok(Test);
+                }
+                else
+                {
+                    Test.Type = "Success";
+                    Test.Message = "Tải dữ liệu thành công";
+                    Test.Data = products;
+                    return Ok(Test);
+                }    
             }
             catch (Exception)
             {
@@ -56,7 +68,7 @@ namespace He_thong_ban_hang
             {
                 var model = _productService.SaveProduct(productModel);
                 return Ok(model);
-            }
+            } 
             catch (Exception)
             {
                 return BadRequest();

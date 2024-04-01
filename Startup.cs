@@ -36,6 +36,7 @@ namespace He_thong_ban_hang
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductService, ProductService>();
 
         }
 

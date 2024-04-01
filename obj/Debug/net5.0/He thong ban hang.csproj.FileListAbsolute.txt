@@ -61,7 +61,6 @@ C:\Users\ADMIN\Desktop\C#\He thong ban hang\obj\Debug\net5.0\He thong ban hang.p
 C:\Users\ADMIN\Desktop\C#\He thong ban hang\obj\Debug\net5.0\He thong ban hang.genruntimeconfig.cache
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\bin\Debug\net5.0\appsettings.json
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\bin\Debug\net5.0\He thong ban hang.StaticWebAssets.xml
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\bin\Debug\net5.0\He thong ban hang.exe
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\bin\Debug\net5.0\He thong ban hang.deps.json
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\bin\Debug\net5.0\He thong ban hang.runtimeconfig.json
@@ -111,18 +110,13 @@ C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.Asse
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.csproj.CoreCompileInputs.cache
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.sourcelink.json
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.RazorTargetAssemblyInfo.cache
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\scopedcss\bundle\He thong ban hang.styles.css
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\He thong ban hang.StaticWebAssets.Manifest.cache
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\He thong ban hang.StaticWebAssets.Pack.cache
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.He thong ban hang.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.build.He thong ban hang.props
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.He thong ban hang.props
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.He thong ban hang.props
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong.834DFA99.Up2Date
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.dll
-C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\refint\He thong ban hang.dll
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.pdb
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.genruntimeconfig.cache
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\ref\He thong ban hang.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\ref\He thong ban hang.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\He thong ban hang.StaticWebAssets.xml
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.csproj.CopyComplete

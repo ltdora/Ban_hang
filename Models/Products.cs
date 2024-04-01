@@ -13,7 +13,7 @@ namespace He_thong_ban_hang
 
         public decimal ProductPrice { get; set; }
 
-        public ICollection<ShoppingCart> shoppingCart { get; }
+        public ICollection<OrderDetail> orderDetails { get; }
 
     }
 }

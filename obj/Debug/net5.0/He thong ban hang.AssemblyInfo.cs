@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("He thong ban hang")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09a0d2113da8fd87477ecfdefa89ee0cf0af90b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("He thong ban hang")]
 [assembly: System.Reflection.AssemblyTitleAttribute("He thong ban hang")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

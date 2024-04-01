@@ -8,10 +8,26 @@ namespace He_thong_ban_hang
 {
     public class ShopContext : DbContext
     {
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<OrderDetail>(
+        //            eb =>
+        //            {
+        //                eb.HasNoKey();
+        //                //eb.ToView("View_BlogPostCounts");
+        //                //eb.Property(v => v.BlogName).HasColumnName("Name");
+        //            });
+        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<OrderDetail>()
+                  .HasKey(m => new { m.ProductID, m.OrderID});
+        }
         public ShopContext(DbContextOptions options) : base(options) { }
-        DbSet<Employees> Employees { set; get; }
+        public DbSet<Employees> Employees { set; get; }
         DbSet<Users> Uses { set; get; }
-        DbSet<Products> Products { set; get; }
-        DbSet<ShoppingCart> ShoppingCarts { set; get;}
+        public DbSet<Products> Products { set; get; }
+        DbSet<Order> Orders { set; get;}
+        DbSet<OrderDetail> OrderDetails { set; get; }
     }
 }
