@@ -10,6 +10,8 @@ namespace He_thong_ban_hang
     {
         public ShopContext(DbContextOptions options) : base(options) { }
         DbSet<Employees> Employees { set; get; }
-        DbSet<Users> uses { set; get; }
+        DbSet<Users> Uses { set; get; }
+        DbSet<Products> Products { set; get; }
+        DbSet<ShoppingCart> ShoppingCarts { set; get;}
     }
 }
