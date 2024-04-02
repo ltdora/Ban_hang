@@ -3,32 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\shopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:models\\shopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\services\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:services\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:models\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\shopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|solutionrelative:models\\shopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DED9E85F-4B3E-4866-AEEC-88D376FBED1F}|He thong ban hang.csproj|c:\\users\\admin\\documents\\github\\ban_hang\\models\\employees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,60 +62,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAYwFEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-01T09:55:28.483Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAANAAAA",
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Controllers\\OrderController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-01T09:55:21.979Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IEmployeeService.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IEmployeeService.cs",
-              "RelativeDocumentMoniker": "Services\\IEmployeeService.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IEmployeeService.cs",
-              "RelativeToolTip": "Services\\IEmployeeService.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAswH8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-01T09:43:59.119Z",
+              "WhenOpened": "2024-04-02T09:28:05.135Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "IOrderService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IOrderService.cs",
+              "RelativeDocumentMoniker": "Services\\IOrderService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IOrderService.cs",
+              "RelativeToolTip": "Services\\IOrderService.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwCsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T09:21:37.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "IProductService.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IProductService.cs",
               "RelativeDocumentMoniker": "Services\\IProductService.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IProductService.cs",
               "RelativeToolTip": "Services\\IProductService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFQAAAAYAAAA",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAYwFQAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-01T09:43:51.532Z",
               "EditorCaption": ""
@@ -103,32 +106,109 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ShoppingCart.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\ShoppingCart.cs",
-              "RelativeDocumentMoniker": "Models\\ShoppingCart.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\ShoppingCart.cs",
-              "RelativeToolTip": "Models\\ShoppingCart.cs",
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "Models\\OrderDetail.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\OrderDetail.cs",
+              "RelativeToolTip": "Models\\OrderDetail.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-01T09:31:44.307Z",
+              "WhenOpened": "2024-04-02T09:21:33.109Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "ShopContext.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\ShopContext.cs",
               "RelativeDocumentMoniker": "Models\\ShopContext.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\ShopContext.cs",
               "RelativeToolTip": "Models\\ShopContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-01T09:31:39.938Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowEMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T09:55:21.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "Services\\IUserService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IUserService.cs",
+              "RelativeToolTip": "Services\\IUserService.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAA0wHQAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T09:26:28.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "Models\\Users.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\Users.cs",
+              "RelativeToolTip": "Models\\Users.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T09:23:14.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Models\\Order.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\Order.cs",
+              "RelativeToolTip": "Models\\Order.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T09:21:34.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\IEmployeeService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Services\\IEmployeeService.cs",
+              "RelativeToolTip": "Services\\IEmployeeService.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAYwHMAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T09:43:59.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "Controllers\\EmployeeController.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwFEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T09:55:28.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Products.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\Products.cs",
               "RelativeDocumentMoniker": "Models\\Products.cs",
@@ -136,12 +216,11 @@
               "RelativeToolTip": "Models\\Products.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-01T09:31:36.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-01T09:31:36.036Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "Employees.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\Ban_hang\\Models\\Employees.cs",
               "RelativeDocumentMoniker": "Models\\Employees.cs",
@@ -149,8 +228,7 @@
               "RelativeToolTip": "Models\\Employees.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-01T09:31:33.793Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-01T09:31:33.793Z"
             }
           ]
         }

@@ -11,6 +11,11 @@ namespace He_thong_ban_hang.Services
     }
     public class OrderService : IOrderService
     {
+        private readonly ShopContext _context;
+        public OrderService(ShopContext context)
+        {
+            _context = context;
+        }
         public BaseRespone<OrderDetail> CreateOrder(List<OrderDetail> orderDetails, int IdUser)
         {
             
@@ -24,16 +29,20 @@ namespace He_thong_ban_hang.Services
                     var checkCoSp = orderDetails.Where(i => i.ProductID == item).ToList();
                     if (checkCoSp == null)
                     {
-                        respone.Message = "Co san pham khong ton tai";
+                        respone.Message = "Lỗi chứa sản phẩm không hợp lệ";
                         return respone;
                     }
                     
                     var checkTrungSP = orderDetails.Where(e => e.ProductID == item).ToList().Count();
                     if (checkTrungSP > 1)
                     {
-                        respone.Message = "San pham trung";
+                        respone.Message = "Lỗi sản phẩm trùng";
                         return respone;
                     }
+                    orderDetails = _context.OrderDetails.Where(i => i.ProductID == item).ToList();
+                    _context.Add(orderDetails);
+                    _context.SaveChanges();
+                    
 
                 }
 

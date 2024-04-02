@@ -81,12 +81,12 @@ namespace He_thong_ban_hang
                     _temp.UserName = UserModel.UserName;
                     _temp.UserPassword = UserModel.UserPassword;
                     _context.Update<Users>(_temp);
-                    model.Messsage = "User Update Successfully";
+                    model.Messsage = "Cập nhật thông tin người dùng thành công";
                 }
                 else
                 {
                     _context.Add<Users>(UserModel);
-                    model.Messsage = "User Inserted Successfully";
+                    model.Messsage = "Thêm người dùng thành công";
                 }
                 _context.SaveChanges();
                 model.IsSuccess = true;
@@ -109,12 +109,12 @@ namespace He_thong_ban_hang
                     _context.Remove<Users>(_temp);
                     _context.SaveChanges();
                     model.IsSuccess = true;
-                    model.Messsage = "User Deleted Successfully";
+                    model.Messsage = "Xoá người dùng thành công";
                 }
                 else
                 {
                     model.IsSuccess = false;
-                    model.Messsage = "User Not Found";
+                    model.Messsage = "Không tìm thấy người dùng";
                 }
             }
             catch (Exception ex)

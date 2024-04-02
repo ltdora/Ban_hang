@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using He_thong_ban_hang.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,20 @@ namespace He_thong_ban_hang
     [ApiController]
     public class OrderController : Controller
     {
+        IOrderService _orderService;
         [HttpPost]
         [Route("[action]")]
-        public IActionResult CreateOrder(List<OrderDetail> liOrderDetail)
+        public IActionResult CreateOrder(List<OrderDetail> liOrderDetail, int userID)
         {
-            return View();
+            try
+            {
+                var model = _orderService.CreateOrder(liOrderDetail, userID);
+                return Ok(model);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
     }
 }
