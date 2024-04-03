@@ -50,6 +50,12 @@ namespace He_thong_ban_hang.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
                     b.HasKey("OrderID");
 
                     b.ToTable("Orders");

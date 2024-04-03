@@ -25,7 +25,7 @@ namespace He_thong_ban_hang
         }
         public ShopContext(DbContextOptions options) : base(options) { }
         public DbSet<Employees> Employees { set; get; }
-        DbSet<Users> Uses { set; get; }
+        public DbSet<Users> Uses { set; get; }
         public DbSet<Products> Products { set; get; }
         public DbSet<Order> Orders { set; get;}
         public DbSet<OrderDetail> OrderDetails { set; get; }

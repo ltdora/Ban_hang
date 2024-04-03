@@ -34,6 +34,12 @@ namespace He_thong_ban_hang
         /// <param name="UserId"></param>
         /// <returns></returns>
         ResponseModel DeleteUser(int UserId);
+
+        /// <summary>
+        /// get list of all Users
+        /// </summary>
+        /// <returns></returns>
+        Users LogInUser(LogInRequest model);
     }
     public class UserService : IUserService
     {
@@ -123,6 +129,22 @@ namespace He_thong_ban_hang
                 model.Messsage = "Error : " + ex.Message;
             }
             return model;
+        }
+
+        public Users LogInUser(LogInRequest model)
+        {
+            {
+                Users empList=new Users();
+                try
+                {
+                    empList = _context.Uses.Where(e => e.UserName == model.UserName && e.UserPassword == model.UserPassword).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return empList;
+            }
         }
     }
 }

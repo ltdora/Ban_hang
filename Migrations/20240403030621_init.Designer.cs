@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace He_thong_ban_hang.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20240401160648_updateorder")]
-    partial class updateorder
+    [Migration("20240403030621_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,12 @@ namespace He_thong_ban_hang.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");

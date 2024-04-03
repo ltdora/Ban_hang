@@ -9,6 +9,8 @@ namespace He_thong_ban_hang
         [Key]
         public int OrderID { get; set; }
 
+        public int UserID { get; set; }
+
         public int Status { get; set; }
 
         public DateTime CreatedTime { get; set; }
