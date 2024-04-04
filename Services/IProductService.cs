@@ -78,12 +78,12 @@ namespace He_thong_ban_hang
                     _temp.ProductName = productModel.ProductName;
                     _temp.ProductPrice = productModel.ProductPrice;
                     _context.Update<Products>(_temp);
-                    model.Messsage = "Cập nhật thông tin sản phẩm thành công";
+                    model.Message = "Cập nhật thông tin sản phẩm thành công";
                 }
                 else
                 {
                     _context.Add<Products>(productModel);
-                    model.Messsage = "Thêm sản phẩm thành công";
+                    model.Message = "Thêm sản phẩm thành công";
                 }
                 _context.SaveChanges();
                 model.IsSuccess = true;
@@ -91,7 +91,7 @@ namespace He_thong_ban_hang
             catch (Exception ex)
             {
                 model.IsSuccess = false;
-                model.Messsage = "Error : " + ex.Message;
+                model.Message = "Error : " + ex.Message;
             }
             return model;
         }
@@ -106,18 +106,18 @@ namespace He_thong_ban_hang
                     _context.Remove<Products>(_temp);
                     _context.SaveChanges();
                     model.IsSuccess = true;
-                    model.Messsage = "Xoá sản phẩm thành công";
+                    model.Message = "Xoá sản phẩm thành công";
                 }
                 else
                 {
                     model.IsSuccess = false;
-                    model.Messsage = "Không tìm thấy sản phẩm";
+                    model.Message = "Không tìm thấy sản phẩm";
                 }
             }
             catch (Exception ex)
             {
                 model.IsSuccess = false;
-                model.Messsage = "Error : " + ex.Message;
+                model.Message = "Error : " + ex.Message;
             }
             return model;
         }

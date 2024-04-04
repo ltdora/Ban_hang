@@ -32,6 +32,22 @@ namespace He_thong_ban_hang
             }
         }
 
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult DisplayOrder(int userID)
+        {
+            try
+            {
+                var ord = _orderService.DisplayOrder(userID);
+                if (ord == null) return NotFound();
+                return Ok(ord);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+        }
         [HttpPost]
         [Route("[action]")]
         public IActionResult SaveOrder(int quantity, int productID, int orderID)
@@ -43,7 +59,21 @@ namespace He_thong_ban_hang
             }
             catch (Exception)
             {
-                throw;
+                return BadRequest();
+            }
+        }
+        [HttpPost]
+        [Route("[action]")]
+        public IActionResult DeleteOrder(int quantity, int productID, int orderID)
+        {
+            try
+            {
+                var model = _orderService.DeleteOrder(quantity, productID, orderID);
+                return Ok(model);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
             }
         }
     }

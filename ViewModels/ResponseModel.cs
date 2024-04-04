@@ -8,6 +8,6 @@ namespace He_thong_ban_hang
     public class ResponseModel
     {
         public bool IsSuccess { set; get; }
-        public string Messsage { set; get; }
+        public string Message { set; get; }
     }
 }

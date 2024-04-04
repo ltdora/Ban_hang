@@ -17,6 +17,6 @@ namespace He_thong_ban_hang
 
         public decimal Total { set; get; }
 
-        public ICollection<OrderDetail> orderDetail { get; }
+        public List<OrderDetail> orderDetail { get; set; } 
     }
 }

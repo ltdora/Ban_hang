@@ -80,12 +80,12 @@ namespace He_thong_ban_hang
                     _temp.EmployeeName = employeeModel.EmployeeName;
                     _temp.EmployeePassword = employeeModel.EmployeePassword;
                     _context.Update<Employees>(_temp);
-                    model.Messsage = "Cập nhật thông tin nhân viên thành công";
+                    model.Message = "Cập nhật thông tin nhân viên thành công";
                 }
                 else
                 {
                     _context.Add<Employees>(employeeModel);
-                    model.Messsage = "Thêm nhân viên thành công";
+                    model.Message = "Thêm nhân viên thành công";
                 }
                 _context.SaveChanges();
                 model.IsSuccess = true;
@@ -93,7 +93,7 @@ namespace He_thong_ban_hang
             catch (Exception ex)
             {
                 model.IsSuccess = false;
-                model.Messsage = "Error : " + ex.Message;
+                model.Message = "Error : " + ex.Message;
             }
             return model;
         }
@@ -108,18 +108,18 @@ namespace He_thong_ban_hang
                     _context.Remove<Employees>(_temp);
                     _context.SaveChanges();
                     model.IsSuccess = true;
-                    model.Messsage = "Xoá nhân viên thành công";
+                    model.Message = "Xoá nhân viên thành công";
                 }
                 else
                 {
                     model.IsSuccess = false;
-                    model.Messsage = "Không tìm thấy nhân viên";
+                    model.Message = "Không tìm thấy nhân viên";
                 }
             }
             catch (Exception ex)
             {
                 model.IsSuccess = false;
-                model.Messsage = "Error : " + ex.Message;
+                model.Message = "Error : " + ex.Message;
             }
             return model;
         }
