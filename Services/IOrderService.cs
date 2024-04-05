@@ -9,7 +9,8 @@ namespace He_thong_ban_hang
     {
         BaseRespone<Order> CreateOrder(List<OrderDetail>orderDetails,int IdUser);
         BaseRespone<List<Order>> DisplayOrder(int userID);
-        BaseRespone<OrderDetail> SaveOrder(int quantity, int productID, int orderID);
+        BaseRespone<List<Order>> DisplayExcelOrder();
+        BaseRespone<OrderDetail> SaveOrder(int quantity, int productID, int orderID, decimal price);
         BaseRespone<OrderDetail> DeleteOrder(int quantity, int productID, int orderID);
     }
     public class OrderService : IOrderService
@@ -75,6 +76,32 @@ namespace He_thong_ban_hang
                 return respone;
             }
         }
+        public OrderDetail GetOrderDetailsById(int productID)
+        {
+            OrderDetail orderDetail;
+            try
+            {
+                orderDetail = _context.Find<OrderDetail>(productID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return orderDetail;
+        }
+        public Order GetOrdersById(int productID)
+        {
+            Order Order;
+            try
+            {
+                Order = _context.Find<Order>(productID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return Order;
+        }
         public BaseRespone<List<Order>> DisplayOrder(int userID)
         {
             BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
@@ -100,7 +127,26 @@ namespace He_thong_ban_hang
                 return response;
             }
         }
-        public BaseRespone<OrderDetail> SaveOrder(int quantity, int productID, int orderID)
+        public BaseRespone<List<Order>> DisplayExcelOrder()
+        {
+            BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
+            List<Order> ord = new List<Order>();
+            try
+            {
+                ord = _context.Orders.ToList();
+                
+                response.Data = ord;
+                response.Message = "Thành công";
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Type = "Error";
+                response.Message = ex.Message;
+                return response;
+            }
+        }
+        public BaseRespone<OrderDetail> SaveOrder(int quantity, int productID, int orderID, decimal price)
         {
             BaseRespone<OrderDetail> response = new BaseRespone<OrderDetail>();
             var liOrderDetail = _context.OrderDetails.Where(x => x.OrderID == orderID).ToList();
@@ -135,9 +181,13 @@ namespace He_thong_ban_hang
                     {
                         OrderID = orderID,
                         ProductID = productID,
-                        Quantity = quantity
+                        Quantity = quantity,
+                        Price = price
                     });
                 }
+                Order order = GetOrdersById(orderID);
+                order.Total = order.Total + quantity * price;
+                _context.Update<Order>(order);
                 _context.SaveChanges();
 
                 return response;
@@ -148,19 +198,6 @@ namespace He_thong_ban_hang
                 response.Message = ex.Message;
                 return response;
             }
-        }
-        public OrderDetail GetOrderDetailsById(int productID)
-        {
-            OrderDetail orderDetail;
-            try
-            {
-                orderDetail = _context.Find<OrderDetail>(productID);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return orderDetail;
         }
         public BaseRespone<OrderDetail> DeleteOrder(int quantity, int productID, int orderID)
         {
@@ -194,11 +231,17 @@ namespace He_thong_ban_hang
                                 //var _temp = GetOrderDetailsById(productID);
                                 //_context.Remove<OrderDetail>(_temp);
                                 _context.Remove<OrderDetail>(item);
+                                Order order = GetOrdersById(orderID);
+                                order.Total = order.Total - quantity * item.Price;
+                                _context.Update<Order>(order);
                                 response.Message = "Xoá sản phẩm thành công";
                             }
                             else
                             {
                                 item.Quantity = item.Quantity - quantity;
+                                Order order = GetOrdersById(orderID);
+                                order.Total = order.Total - quantity * item.Price;
+                                _context.Update<Order>(order);
                                 response.Message = "Giảm số lượng sản phẩm thành công";
                             }
                         }

@@ -122,3 +122,14 @@ C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.cspr
 C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\EPPlus.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\EPPlus.Interfaces.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\EPPlus.System.Drawing.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.IO.RecyclableMemoryStream.dll

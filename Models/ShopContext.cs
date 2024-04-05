@@ -3,21 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace He_thong_ban_hang
 {
     public class ShopContext : DbContext
     {
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<OrderDetail>(
-        //            eb =>
-        //            {
-        //                eb.HasNoKey();
-        //                //eb.ToView("View_BlogPostCounts");
-        //                //eb.Property(v => v.BlogName).HasColumnName("Name");
-        //            });
-        //}
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OrderDetail>()
@@ -30,4 +24,5 @@ namespace He_thong_ban_hang
         public DbSet<Order> Orders { set; get;}
         public DbSet<OrderDetail> OrderDetails { set; get; }
     }
+
 }
