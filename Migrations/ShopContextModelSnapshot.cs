@@ -56,7 +56,12 @@ namespace He_thong_ban_hang.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UsersUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("OrderID");
+
+                    b.HasIndex("UsersUserId");
 
                     b.ToTable("Orders");
                 });
@@ -123,6 +128,13 @@ namespace He_thong_ban_hang.Migrations
                     b.ToTable("Uses");
                 });
 
+            modelBuilder.Entity("He_thong_ban_hang.Order", b =>
+                {
+                    b.HasOne("He_thong_ban_hang.Users", null)
+                        .WithMany("order")
+                        .HasForeignKey("UsersUserId");
+                });
+
             modelBuilder.Entity("He_thong_ban_hang.OrderDetail", b =>
                 {
                     b.HasOne("He_thong_ban_hang.Order", null)
@@ -144,6 +156,11 @@ namespace He_thong_ban_hang.Migrations
             modelBuilder.Entity("He_thong_ban_hang.Products", b =>
                 {
                     b.Navigation("orderDetails");
+                });
+
+            modelBuilder.Entity("He_thong_ban_hang.Users", b =>
+                {
+                    b.Navigation("order");
                 });
 #pragma warning restore 612, 618
         }

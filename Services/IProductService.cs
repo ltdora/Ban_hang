@@ -13,9 +13,9 @@ namespace He_thong_ban_hang
 
         List<Products> GetProductDetailsByName(string proName);
 
-        ResponseModel SaveProduct(Products productModel);
+        BaseRespone<Products> SaveProduct(Products productModel);
 
-        ResponseModel DeleteProduct(int productID);
+        BaseRespone<Products> DeleteProduct(int productID);
     }
     public class ProductService : IProductService
     {
@@ -67,9 +67,9 @@ namespace He_thong_ban_hang
             return pro;
         }
 
-        public ResponseModel SaveProduct(Products productModel)
+        public BaseRespone<Products> SaveProduct(Products productModel)
         {
-            ResponseModel model = new ResponseModel();
+            BaseRespone<Products> respone = new BaseRespone<Products>();
             try
             {
                 Products _temp = GetProductDetailsById(productModel.ProductID);
@@ -78,48 +78,50 @@ namespace He_thong_ban_hang
                     _temp.ProductName = productModel.ProductName;
                     _temp.ProductPrice = productModel.ProductPrice;
                     _context.Update<Products>(_temp);
-                    model.Message = "Cập nhật thông tin sản phẩm thành công";
+                    respone.Message = "Cập nhật thông tin sản phẩm thành công";
                 }
                 else
                 {
                     _context.Add<Products>(productModel);
-                    model.Message = "Thêm sản phẩm thành công";
+                    respone.Message = "Thêm sản phẩm thành công";
                 }
                 _context.SaveChanges();
-                model.IsSuccess = true;
+                respone.Data = productModel;
+                respone.Type = "Success";
             }
             catch (Exception ex)
             {
-                model.IsSuccess = false;
-                model.Message = "Error : " + ex.Message;
+                respone.Type = "Error";
+                respone.Message = "Error : " + ex.Message;
             }
-            return model;
+            return respone;
         }
-        public ResponseModel DeleteProduct(int productID)
+        public BaseRespone<Products> DeleteProduct(int productID)
         {
-            ResponseModel model = new ResponseModel();
+            BaseRespone<Products> respone = new BaseRespone<Products>();
             try
             {
                 Products _temp = GetProductDetailsById(productID);
                 if (_temp != null)
                 {
+                    respone.Data = _temp;
                     _context.Remove<Products>(_temp);
                     _context.SaveChanges();
-                    model.IsSuccess = true;
-                    model.Message = "Xoá sản phẩm thành công";
+                    respone.Type = "Success";
+                    respone.Message = "Xoá sản phẩm thành công";
                 }
                 else
                 {
-                    model.IsSuccess = false;
-                    model.Message = "Không tìm thấy sản phẩm";
+                    respone.Type = "Success";
+                    respone.Message = "Không tìm thấy sản phẩm";
                 }
             }
             catch (Exception ex)
             {
-                model.IsSuccess = false;
-                model.Message = "Error : " + ex.Message;
+                respone.Type = "Error";
+                respone.Message = "Error : " + ex.Message;
             }
-            return model;
+            return respone;
         }
     }
 }

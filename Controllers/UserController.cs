@@ -37,11 +37,11 @@ namespace He_thong_ban_hang
 
         [HttpGet]
         [Route("[action]/id")]
-        public IActionResult GetUsersById(int id)
+        public IActionResult GetUserById(int id)
         {
             try
             {
-                var Users = _UserService.GetUserDetailsById(id);
+                var Users = _UserService.GetUserById(id);
                 if (Users == null) return NotFound();
                 return Ok(Users);
             }
@@ -50,6 +50,23 @@ namespace He_thong_ban_hang
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [Route("[action]/id")]
+        public IActionResult GetUserDetailsByID(int id)
+        {
+            try
+            {
+                var userdetail = _UserService.GetUserDetailsById(id);
+                if (userdetail == null) return NotFound();
+                return Ok(userdetail);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost]
         [Route("[action]")]
         public IActionResult SaveUsers(Users UserModel)

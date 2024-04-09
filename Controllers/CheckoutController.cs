@@ -16,11 +16,11 @@ namespace He_thong_ban_hang
 
         [HttpPost]
         [Route("[action]")]
-        public IActionResult CheckoutOrder(int orderID)
+        public IActionResult CheckoutOrder(int orderID, int status)
         {
             try
             {
-                var model = _checkoutService.CheckoutOrder(orderID);
+                var model = _checkoutService.CheckoutOrder(orderID, status);
                 return Ok(model);
             }
             catch(Exception)

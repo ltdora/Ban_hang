@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DinkToPdf;
+using DinkToPdf.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
@@ -16,10 +18,16 @@ namespace He_thong_ban_hang
     public class OrderController : Controller
     {
         IOrderService _orderService;
-        public OrderController(IOrderService service)
+        IConverter _converter;
+        public OrderController(IOrderService service, IConverter converter)
         {
             _orderService = service;
+            _converter = converter;
         }
+        //public OrderController(IConverter converter)
+        //{
+        //    _converter = converter;
+        //}
         [HttpPost]
         [Route("[action]")]
         public IActionResult CreateOrder(List<OrderDetail> liOrderDetail, int userID)
@@ -42,6 +50,38 @@ namespace He_thong_ban_hang
             try
             {
                 var ord = _orderService.DisplayOrder(userID);
+                if (ord == null) return NotFound();
+                return Ok(ord);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult DisplayOrderStatus(int status)
+        {
+            try
+            {
+                var ord = _orderService.DisplayOrderStatus(status);
+                if (ord == null) return NotFound();
+                return Ok(ord);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime)
+        {
+            try
+            {
+                var ord = _orderService.DisplayOrderStatusTime(status, startTime, endTime);
                 if (ord == null) return NotFound();
                 return Ok(ord);
             }
@@ -141,9 +181,85 @@ namespace He_thong_ban_hang
                 package.Save();
             }
             stream.Position = 0;
-            string excelName = $"List-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
 
-            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Order.xlsx");
+        }
+        
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult CreatePDF()
+        {
+            try
+            {
+                var lstOrder = _orderService.GetOrderList();
+
+                var globalSettings = new GlobalSettings
+                {
+                    ColorMode = ColorMode.Color,
+                    Orientation = DinkToPdf.Orientation.Portrait,
+                    PaperSize = PaperKind.A4,
+                    Margins = new MarginSettings { Top = 10 },
+                    DocumentTitle = "PDF Report"
+                };
+
+                var objectSettings = new ObjectSettings
+                {
+                    PagesCount = true,
+                    HtmlContent =  GenerateExportPDFNhatKyIn(lstOrder),
+                    WebSettings = { DefaultEncoding = "utf-8" },
+                };
+
+                var pdf = new HtmlToPdfDocument()
+                {
+                    GlobalSettings = globalSettings,
+                    Objects = { objectSettings }
+                };
+                var file = _converter.Convert(pdf);
+                return File(file, "application/pdf", "Orders.pdf");
+            }
+            catch (Exception e)
+            {
+                return null ;
+            }
+        }
+        private string GenerateExportPDFNhatKyIn(List<Order> Data)
+        {
+            var body = string.Empty;
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "Template/HoaDon", "ListOrder.html");
+            using (StreamReader reader = new StreamReader(path))
+            {
+                body = reader.ReadToEnd();
+            }
+            if (Data != null)
+            {
+                int Stt = 1;
+                string strHtml = "";
+                strHtml += "<div><table><tr> "
+                            + "<th>STT</th>"
+                            + "<th>OrderID</th>"
+                            + "<th>UserID</th>"
+                            + "<th>Status</th>"
+                            + "<th>Total</th></tr>";
+                foreach (var item in Data)
+                {
+                    strHtml += "<tr><td>" + Stt + "</td>"
+                        + "<td>" + item.OrderID + "</td>"
+                        + "<td>" + item.UserID + "</td>"
+                        + "<td>" + item.Status + "</td>"
+                        + "<td>" + item.Total + "</td></tr>";
+                    Stt++;
+                }
+                strHtml += "</table></div>";
+                if (!string.IsNullOrEmpty(strHtml))
+                {
+                    body = body.Replace("{BillData}", strHtml);
+                }
+                else
+                {
+                    body = body.Replace("{BillData}", "");
+                }
+            }
+            return body;
         }
     }
 }

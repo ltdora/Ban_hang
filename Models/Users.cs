@@ -12,5 +12,6 @@ namespace He_thong_ban_hang
         public int UserId { set; get; }
         public string UserName { set; get; }
         public string UserPassword { set; get; }
+        public List<Order> order { set; get; }
     }
 }

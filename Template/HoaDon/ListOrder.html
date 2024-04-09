@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 20px
+        }
+
+        table, td, th {
+            border: 1px solid;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table {
+            page-break-after: auto;
+        }
+
+        table {
+            page-break-inside: auto;
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        tfoot {
+            display: table-footer-group;
+        }
+    </style>
+</head>
+<body>
+    <div>
+     
+        <div style="width:100%;float: none;margin-top: 75px;">
+            <h2 style="text-align: center;text-transform: uppercase;">Danh sách Order</h2>
+        </div>
+        {BillData}
+    </div>
+</body>
+</html>

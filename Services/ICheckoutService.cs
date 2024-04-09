@@ -7,7 +7,7 @@ namespace He_thong_ban_hang
 {
     public interface ICheckoutService
     {
-        BaseRespone<Order> CheckoutOrder(int orderID);
+        BaseRespone<Order> CheckoutOrder(int orderID, int status);
     }
     public class CheckoutService : ICheckoutService
     {
@@ -16,7 +16,7 @@ namespace He_thong_ban_hang
         {
             _context = context;
         }
-        public BaseRespone<Order> CheckoutOrder(int orderID)
+        public BaseRespone<Order> CheckoutOrder(int orderID, int status)
         {
             BaseRespone<Order> respone = new BaseRespone<Order>();
             List<Order> ord = new List<Order>();
@@ -34,8 +34,23 @@ namespace He_thong_ban_hang
                 {
                     foreach(var item in liOrder)
                     {
-                        item.Status = 1;
-                        respone.Message = "Thanh toán thành công";
+                        item.Status = status;
+                        switch (status)
+                        {
+                            case 1:
+                                respone.Message = "Thanh toán đơn hàng thành công";
+                                break;
+                            case 2:
+                                respone.Message = "Hủy đơn hàng thành công";
+                                break;
+                            default:
+                                {
+                                    respone.Message = "Trạng thái đơn hàng không hợp lệ";
+                                    respone.Type = "Error";
+                                    return respone;
+                                }
+                                break;
+                        }
                         respone.Data = item;
 
                         ord = _context.Orders.Where(x => x.OrderID == orderID).ToList();

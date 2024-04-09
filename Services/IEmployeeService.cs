@@ -7,33 +7,13 @@ namespace He_thong_ban_hang
 {
     public interface IEmployeeService
     {
-        /// <summary>
-        /// get list of all employees
-        /// </summary>
-        /// <returns></returns>
         List<Employees> GetEmployeesList();
 
-        /// <summary>
-        /// get employee details by employee id
-        /// </summary>
-        /// <param name="empId"></param>
-        /// <returns></returns>
         Employees GetEmployeeDetailsById(int empId);
 
-        /// <summary>
-        ///  add edit employee
-        /// </summary>
-        /// <param name="employeeModel"></param>
-        /// <returns></returns>
-        ResponseModel SaveEmployee(Employees employeeModel);
+        BaseRespone<Employees> SaveEmployee(Employees employeeModel);
 
-
-        /// <summary>
-        /// delete employees
-        /// </summary>
-        /// <param name="employeeId"></param>
-        /// <returns></returns>
-        ResponseModel DeleteEmployee(int employeeId);
+        BaseRespone<Employees> DeleteEmployee(int employeeId);
     }
     public class EmployeeService : IEmployeeService
     {
@@ -69,9 +49,9 @@ namespace He_thong_ban_hang
             }
             return emp;
         }
-        public ResponseModel SaveEmployee(Employees employeeModel)
+        public BaseRespone<Employees> SaveEmployee(Employees employeeModel)
         {
-            ResponseModel model = new ResponseModel();
+            BaseRespone<Employees> respone = new BaseRespone<Employees>();
             try
             {
                 Employees _temp = GetEmployeeDetailsById(employeeModel.EmployeeId);
@@ -80,26 +60,27 @@ namespace He_thong_ban_hang
                     _temp.EmployeeName = employeeModel.EmployeeName;
                     _temp.EmployeePassword = employeeModel.EmployeePassword;
                     _context.Update<Employees>(_temp);
-                    model.Message = "Cập nhật thông tin nhân viên thành công";
+                    respone.Message = "Cập nhật thông tin nhân viên thành công";
                 }
                 else
                 {
                     _context.Add<Employees>(employeeModel);
-                    model.Message = "Thêm nhân viên thành công";
+                    respone.Message = "Thêm nhân viên thành công";
                 }
                 _context.SaveChanges();
-                model.IsSuccess = true;
+                respone.Data = employeeModel;
+                respone.Type = "Success";
             }
             catch (Exception ex)
             {
-                model.IsSuccess = false;
-                model.Message = "Error : " + ex.Message;
+                respone.Type = "Error";
+                respone.Message = "Error : " + ex.Message;
             }
-            return model;
+            return respone;
         }
-        public ResponseModel DeleteEmployee(int employeeId)
+        public BaseRespone<Employees> DeleteEmployee(int employeeId)
         {
-            ResponseModel model = new ResponseModel();
+            BaseRespone<Employees> respone = new BaseRespone<Employees>();
             try
             {
                 Employees _temp = GetEmployeeDetailsById(employeeId);
@@ -107,21 +88,21 @@ namespace He_thong_ban_hang
                 {
                     _context.Remove<Employees>(_temp);
                     _context.SaveChanges();
-                    model.IsSuccess = true;
-                    model.Message = "Xoá nhân viên thành công";
+                    respone.Type = "Success";
+                    respone.Message = "Xoá nhân viên thành công";
                 }
                 else
                 {
-                    model.IsSuccess = false;
-                    model.Message = "Không tìm thấy nhân viên";
+                    respone.Type = "Success";
+                    respone.Message = "Không tìm thấy nhân viên";
                 }
             }
             catch (Exception ex)
             {
-                model.IsSuccess = false;
-                model.Message = "Error : " + ex.Message;
+                respone.Type = "Error";
+                respone.Message = "Error : " + ex.Message;
             }
-            return model;
+            return respone;
         }
     }
 }

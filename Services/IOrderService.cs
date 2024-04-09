@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace He_thong_ban_hang
@@ -9,9 +10,12 @@ namespace He_thong_ban_hang
     {
         BaseRespone<Order> CreateOrder(List<OrderDetail>orderDetails,int IdUser);
         BaseRespone<List<Order>> DisplayOrder(int userID);
+        BaseRespone<List<Order>> DisplayOrderStatus(int status);
+        BaseRespone<List<Order>> DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime);
         BaseRespone<List<Order>> DisplayExcelOrder();
-        BaseRespone<OrderDetail> SaveOrder(int quantity, int productID, int orderID, decimal price);
-        BaseRespone<OrderDetail> DeleteOrder(int quantity, int productID, int orderID);
+        BaseRespone<Order> SaveOrder(int quantity, int productID, int orderID, decimal price);
+        BaseRespone<Order> DeleteOrder(int quantity, int productID, int orderID);
+        List<Order> GetOrderList();
     }
     public class OrderService : IOrderService
     {
@@ -127,6 +131,93 @@ namespace He_thong_ban_hang
                 return response;
             }
         }
+        //public List<Order> GetOrdersWithinTimeFrame(int status, DateTime startTime, DateTime endTime)
+        //{
+        //    return _context.Orders.Where(o => o.CreatedTime >= startTime && o.CreatedTime <= endTime && o.Status == status).ToList();
+        //}
+        public BaseRespone<List<Order>> DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime)
+        {
+            BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
+            var ordertime = _context.Orders.Where(o => o.CreatedTime >= startTime && o.CreatedTime <= endTime && o.Status == status).ToList();
+            decimal total = 0;
+            try
+            {
+                if (ordertime != null)
+                {
+                    foreach (var item in ordertime)
+                    {
+                        item.orderDetail = _context.OrderDetails.Where(e => e.OrderID == item.OrderID).ToList();
+                        total = total + item.Total;
+                       
+                    }
+                }
+                switch (status)
+                {
+                    case 0:
+                        response.Message = $"Danh sách đơn hàng chưa thanh toán. Tổng tiền các đơn hàng: {total}";
+                        break;
+                    case 1:
+                        response.Message = $"Danh sách đơn hàng đã thanh toán. Tổng tiền các đơn hàng: {total}";
+                        break;
+                    case 2:
+                        response.Message = $"Danh sách đơn hàng bị hủy. Tổng tiền các đơn hàng: {total}";
+                        break;
+                    default:
+                        response.Message = "Trạng thái đơn hàng không hợp lệ";
+                        break;
+                }
+                response.Data = ordertime;
+               
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Type = "Error";
+                response.Message = ex.Message;
+                return response;
+            }
+        }
+        public BaseRespone<List<Order>> DisplayOrderStatus(int status)
+        {
+            BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
+            List<Order> ord = new List<Order>();
+            decimal total = 0;
+            try
+            {
+                ord = _context.Orders.Where(x => x.Status == status).ToList();
+                if(ord != null)
+                {
+                    foreach(var item in ord)
+                    {
+                        item.orderDetail = _context.OrderDetails.Where(e => e.OrderID == item.OrderID).ToList();
+                        total = total + item.Total;
+                    }
+                }
+                response.Data = ord;
+                switch (status)
+                {
+                    case 0:
+                        response.Message = $"Danh sách đơn hàng chưa thanh toán. Tổng tiền các đơn hàng: {total}";
+                        break;
+                    case 1:
+                        response.Message = $"Danh sách đơn hàng đã thanh toán. Tổng tiền các đơn hàng: {total}";
+                        break;
+                    case 2:
+                        response.Message = $"Danh sách đơn hàng bị hủy. Tổng tiền các đơn hàng: {total}";
+                        break;
+                    default:
+                        response.Message = "Trạng thái đơn hàng không hợp lệ";
+                        break;
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Type = "Error";
+                response.Message = ex.Message;
+                return response;
+            }
+        }
         public BaseRespone<List<Order>> DisplayExcelOrder()
         {
             BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
@@ -146,9 +237,9 @@ namespace He_thong_ban_hang
                 return response;
             }
         }
-        public BaseRespone<OrderDetail> SaveOrder(int quantity, int productID, int orderID, decimal price)
+        public BaseRespone<Order> SaveOrder(int quantity, int productID, int orderID, decimal price)
         {
-            BaseRespone<OrderDetail> response = new BaseRespone<OrderDetail>();
+            BaseRespone<Order> response = new BaseRespone<Order>();
             var liOrderDetail = _context.OrderDetails.Where(x => x.OrderID == orderID).ToList();
             var liOrderID = _context.Orders.Select(x => x.OrderID).ToList();
             try
@@ -170,7 +261,7 @@ namespace He_thong_ban_hang
                     {
                         item.Quantity = item.Quantity + quantity;
                         isExist = true;
-                        response.Message = "Thêm sản phẩm vào đơn hàng thành công";
+                        response.Message = "Tăng số lượng sản phẩm thành công";
                     }
                     
                 }
@@ -184,10 +275,12 @@ namespace He_thong_ban_hang
                         Quantity = quantity,
                         Price = price
                     });
+                    response.Message = "Thêm mới sản phẩm vào đơn hàng thành công";
                 }
                 Order order = GetOrdersById(orderID);
                 order.Total = order.Total + quantity * price;
                 _context.Update<Order>(order);
+                response.Data = order;
                 _context.SaveChanges();
 
                 return response;
@@ -199,11 +292,11 @@ namespace He_thong_ban_hang
                 return response;
             }
         }
-        public BaseRespone<OrderDetail> DeleteOrder(int quantity, int productID, int orderID)
+        public BaseRespone<Order> DeleteOrder(int quantity, int productID, int orderID)
         {
             try
             {
-                BaseRespone<OrderDetail> response = new BaseRespone<OrderDetail>();
+                BaseRespone<Order> response = new BaseRespone<Order>();
                 var liOrderDetail = _context.OrderDetails.Where(x => x.OrderID == orderID).ToList();
 
                 var checkOrderID = _context.Orders.Where(x => x.OrderID == orderID).ToList();
@@ -218,6 +311,7 @@ namespace He_thong_ban_hang
                 {
                     if(item.ProductID == productID)
                     {
+                        Order order = GetOrdersById(orderID);
                         isExist = true;
                         if (item.Quantity < quantity)
                         {
@@ -231,7 +325,6 @@ namespace He_thong_ban_hang
                                 //var _temp = GetOrderDetailsById(productID);
                                 //_context.Remove<OrderDetail>(_temp);
                                 _context.Remove<OrderDetail>(item);
-                                Order order = GetOrdersById(orderID);
                                 order.Total = order.Total - quantity * item.Price;
                                 _context.Update<Order>(order);
                                 response.Message = "Xoá sản phẩm thành công";
@@ -239,19 +332,28 @@ namespace He_thong_ban_hang
                             else
                             {
                                 item.Quantity = item.Quantity - quantity;
-                                Order order = GetOrdersById(orderID);
                                 order.Total = order.Total - quantity * item.Price;
                                 _context.Update<Order>(order);
                                 response.Message = "Giảm số lượng sản phẩm thành công";
                             }
                         }
                         _context.SaveChanges();
+                        response.Data = order;
+
+                        var liCheckOrder = _context.OrderDetails.Select(x => x.ProductID).ToList();
+                        if(order.Total == 0)
+                        {
+                            _context.Remove<Order>(order);
+                            response.Message = "Không còn sản phẩm, xóa đơn hàng thành công";
+                            _context.SaveChanges();
+                        }
                     }
                     
                 }
                 if (isExist == false)
                 {
                     response.Message = "Lỗi sản phẩm không hợp lệ";
+                    response.Type = "Success";
                     return response;
                 }
                 return response;
@@ -260,6 +362,19 @@ namespace He_thong_ban_hang
             {
                 throw;
             }
+        }
+        public List<Order> GetOrderList()
+        {
+            List<Order> liorder;
+            try
+            {
+                liorder = _context.Set<Order>().ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return liorder;
         }
     }
 }

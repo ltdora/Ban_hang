@@ -7,38 +7,15 @@ namespace He_thong_ban_hang
 {
     public interface IUserService
     {
-        /// <summary>
-        /// get list of all Users
-        /// </summary>
-        /// <returns></returns>
         List<Users> GetUsersList();
 
-        /// <summary>
-        /// get User details by User id
-        /// </summary>
-        /// <param name="empId"></param>
-        /// <returns></returns>
-        Users GetUserDetailsById(int empId);
+        Users  GetUserById(int userId);
+        BaseRespone<List<Users>> GetUserDetailsById(int userID);
 
-        /// <summary>
-        ///  add edit User
-        /// </summary>
-        /// <param name="UserModel"></param>
-        /// <returns></returns>
-        ResponseModel SaveUser(Users UserModel);
+        BaseRespone<Users> SaveUser(Users UserModel);
 
+        BaseRespone<Users> DeleteUser(int UserId);
 
-        /// <summary>
-        /// delete Users
-        /// </summary>
-        /// <param name="UserId"></param>
-        /// <returns></returns>
-        ResponseModel DeleteUser(int UserId);
-
-        /// <summary>
-        /// get list of all Users
-        /// </summary>
-        /// <returns></returns>
         Users LogInUser(LogInRequest model);
     }
     public class UserService : IUserService
@@ -51,99 +28,134 @@ namespace He_thong_ban_hang
 
         public List<Users> GetUsersList()
         {
-            List<Users> empList;
+            List<Users> userList;
             try
             {
-                empList = _context.Set<Users>().ToList();
+                userList = _context.Set<Users>().ToList();
             }
             catch (Exception)
             {
                 throw;
             }
-            return empList;
+            return userList;
         }
-        public Users GetUserDetailsById(int empId)
+        public Users GetUserById(int userId)
         {
-            Users emp;
+            Users user;
             try
             {
-                emp = _context.Find<Users>(empId);
+                user = _context.Find<Users>(userId);
             }
             catch (Exception)
             {
                 throw;
             }
-            return emp;
+            return user;
+        }
+        public BaseRespone<List<Users>> GetUserDetailsById(int userID)
+        {
+            BaseRespone<List<Users>> response = new BaseRespone<List<Users>>();
+            List<Users> user = new List<Users>();
+            List<Order> ord = new List<Order>();
+            try
+            {
+                user = _context.Uses.Where(x => x.UserId == userID).ToList();
+                if (user != null)
+                {
+                    foreach (var itemOrder in user)
+                    {
+                        itemOrder.order = _context.Orders.Where(x => x.UserID == itemOrder.UserId).ToList();
+                        ord = _context.Orders.Where(x => x.UserID == userID).ToList();
+                        if (ord != null)
+                        {
+                            foreach (var itemDonHang in ord)
+                            {
+                                itemDonHang.orderDetail = _context.OrderDetails.Where(e => e.OrderID == itemDonHang.OrderID).ToList();
+                            }
+                        }
+                    }
+                }
+
+                response.Data = user;
+                response.Message = "Thành công";
+                return response;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public ResponseModel SaveUser(Users UserModel)
+        public BaseRespone<Users> SaveUser(Users UserModel)
         {
-            ResponseModel model = new ResponseModel();
+            BaseRespone<Users> respone = new BaseRespone<Users>();
             try
             {
-                Users _temp = GetUserDetailsById(UserModel.UserId);
+                Users _temp = GetUserById(UserModel.UserId);
                 if (_temp != null)
                 {
                     _temp.UserName = UserModel.UserName;
                     _temp.UserPassword = UserModel.UserPassword;
                     _context.Update<Users>(_temp);
-                    model.Message = "Cập nhật thông tin người dùng thành công";
+                    respone.Message = "Cập nhật thông tin người dùng thành công";
                 }
                 else
                 {
                     _context.Add<Users>(UserModel);
-                    model.Message = "Thêm người dùng thành công";
+                    respone.Message = "Thêm người dùng thành công";
                 }
                 _context.SaveChanges();
-                model.IsSuccess = true;
+                respone.Data = UserModel;
+                respone.Type = "Success";
             }
             catch (Exception ex)
             {
-                model.IsSuccess = false;
-                model.Message = "Error : " + ex.Message;
+                respone.Type = "Error";
+                respone.Message = "Error : " + ex.Message;
             }
-            return model;
+            return respone;
         }
-        public ResponseModel DeleteUser(int UserId)
+        public BaseRespone<Users> DeleteUser(int UserId)
         {
-            ResponseModel model = new ResponseModel();
+            BaseRespone<Users> response = new BaseRespone<Users>();
             try
             {
-                Users _temp = GetUserDetailsById(UserId);
+                Users _temp = GetUserById(UserId);
                 if (_temp != null)
                 {
+                    response.Data = _temp;
                     _context.Remove<Users>(_temp);
                     _context.SaveChanges();
-                    model.IsSuccess = true;
-                    model.Message = "Xoá người dùng thành công";
+                    response.Type = "Success";
+                    response.Message = "Xoá người dùng thành công";
                 }
                 else
                 {
-                    model.IsSuccess = false;
-                    model.Message = "Không tìm thấy người dùng";
+                    response.Type = "Success";
+                    response.Message = "Không tìm thấy người dùng";
                 }
             }
             catch (Exception ex)
             {
-                model.IsSuccess = false;
-                model.Message = "Error : " + ex.Message;
+                response.Type = "Error";
+                response.Message = "Error : " + ex.Message;
             }
-            return model;
+            return response;
         }
 
         public Users LogInUser(LogInRequest model)
         {
             {
-                Users empList=new Users();
+                Users userList = new Users();
                 try
                 {
-                    empList = _context.Uses.Where(e => e.UserName == model.UserName && e.UserPassword == model.UserPassword).FirstOrDefault();
+                    userList = _context.Uses.Where(e => e.UserName == model.UserName && e.UserPassword == model.UserPassword).FirstOrDefault();
                 }
                 catch (Exception)
                 {
                     throw;
                 }
-                return empList;
+                return userList;
             }
         }
     }
