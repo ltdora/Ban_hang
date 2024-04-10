@@ -11,7 +11,7 @@ using System.Text;
 public class PaymentInformationModel
 {
     public string OrderType { get; set; }           // Danh muc hang hoa
-    public decimal Amount { get; set; }              // Tong tien * 100 theo quy dinh cua VNPAY
+    public decimal Amount { get; set; }             // Tong tien * 100 theo quy dinh cua VNPAY
     public string OrderDescription { get; set; }    // Message chuyen tien
     public string Name { get; set; }                // Ten khach hang
 }

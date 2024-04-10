@@ -1,5 +1,4 @@
-﻿using He_thong_ban_hang;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,15 +6,45 @@ namespace He_thong_ban_hang
 {
     public interface IUserService
     {
+        /// <summary>
+        /// Hiển thị danh sách người dùng
+        /// </summary>
+        /// <returns>Danh sách người dùng dưới dạng List</returns>
         List<Users> GetUsersList();
 
+        /// <summary>
+        /// Hiển thị thông tin người dùng theo mã người dùng
+        /// </summary>
+        /// <param name="userId">Mã người dùng</param>
+        /// <returns>Thông tin người dùng dưới dạng Model Users</returns>
         Users  GetUserById(int userId);
+
+        /// <summary>
+        /// Hiển thị chi tiết thông tin đơn hàng theo mã người dùng
+        /// </summary>
+        /// <param name="userID">Mã người dùng</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị chi tiết thông tin đơn hàng theo mã người dùng</returns>
         BaseRespone<List<Users>> GetUserDetailsById(int userID);
 
+        /// <summary>
+        /// Cập nhật thêm thông tin người dùng
+        /// </summary>
+        /// <param name="UserModel">Một object kiểu Model Users</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị thông tin người dùng được cập nhật</returns>
         BaseRespone<Users> SaveUser(Users UserModel);
 
+        /// <summary>
+        /// Xóa người dùng theo mã người dùng
+        /// </summary>
+        /// <param name="UserId">Mã người dùng</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị thông tin người dùng bị xóa</returns>
         BaseRespone<Users> DeleteUser(int UserId);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         Users LogInUser(LogInRequest model);
     }
     public class UserService : IUserService
@@ -25,7 +54,6 @@ namespace He_thong_ban_hang
         {
             _context = context;
         }
-
         public List<Users> GetUsersList()
         {
             List<Users> userList;
@@ -85,7 +113,6 @@ namespace He_thong_ban_hang
                 throw;
             }
         }
-
         public BaseRespone<Users> SaveUser(Users UserModel)
         {
             BaseRespone<Users> respone = new BaseRespone<Users>();
@@ -142,7 +169,6 @@ namespace He_thong_ban_hang
             }
             return response;
         }
-
         public Users LogInUser(LogInRequest model)
         {
             {

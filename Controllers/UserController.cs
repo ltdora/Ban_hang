@@ -81,6 +81,7 @@ namespace He_thong_ban_hang
                 return BadRequest();
             }
         }
+
         [HttpDelete]
         [Route("[action]")]
         public IActionResult DeleteUser(int id)

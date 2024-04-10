@@ -1,6 +1,5 @@
 using DinkToPdf;
 using DinkToPdf.Contracts;
-using He_thong_ban_hang.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +35,7 @@ namespace He_thong_ban_hang
 
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             services.AddControllers();
+
             services.AddTokenAuthentication(Configuration);
             services.AddSwaggerGen(c =>
             {

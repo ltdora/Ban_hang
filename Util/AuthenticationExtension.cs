@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace He_thong_ban_hang.Util
+namespace He_thong_ban_hang
 {
     public static class AuthenticationExtension
     {

@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace He_thong_ban_hang.Util
+namespace He_thong_ban_hang
 {
     public class JwtService
     {

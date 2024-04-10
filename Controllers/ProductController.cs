@@ -62,6 +62,7 @@ namespace He_thong_ban_hang
                 return BadRequest();
             }
         }
+
         [HttpPost]
         [Route("[action]")]
         public IActionResult SaveProducts(Products productModel)
@@ -76,6 +77,7 @@ namespace He_thong_ban_hang
                 return BadRequest();
             }
         }
+
         [HttpDelete]
         [Route("[action]")]
         public IActionResult DeleteProduct(int id)

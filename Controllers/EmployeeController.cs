@@ -50,6 +50,7 @@ namespace He_thong_ban_hang
                 return BadRequest();
             }
         }
+
         [HttpPost]
         [Route("[action]")]
         public IActionResult SaveEmployees(Employees employeeModel)
@@ -64,6 +65,7 @@ namespace He_thong_ban_hang
                 return BadRequest();
             }
         }
+
         [HttpDelete]
         [Route("[action]")]
         public IActionResult DeleteEmployee(int id)

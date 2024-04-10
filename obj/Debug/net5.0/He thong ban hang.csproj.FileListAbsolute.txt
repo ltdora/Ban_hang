@@ -116,9 +116,6 @@ C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.dll
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.pdb
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.genruntimeconfig.cache
 C:\Users\ADMIN\Documents\GitHub\Ban_hang\obj\Debug\net5.0\ref\He thong ban hang.dll
-C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\ref\He thong ban hang.dll
-C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\He thong ban hang.StaticWebAssets.xml
-C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.csproj.CopyComplete
 C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.csproj.AssemblyReference.cache
@@ -134,3 +131,12 @@ C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\EPPlus.Interfaces.dll
 C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\EPPlus.System.Drawing.dll
 C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\DinkToPdf.dll
+C:\Users\Admin\Documents\GitHub\Ban_hang\bin\Debug\net5.0\He thong ban hang.StaticWebAssets.xml
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong ban hang.sourcelink.json
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\He thong ban hang.StaticWebAssets.Pack.cache
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.He thong ban hang.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.build.He thong ban hang.props
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.He thong ban hang.props
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.He thong ban hang.props
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\He thong.834DFA99.Up2Date
+C:\Users\Admin\Documents\GitHub\Ban_hang\obj\Debug\net5.0\refint\He thong ban hang.dll

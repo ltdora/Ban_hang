@@ -26,12 +26,27 @@ namespace He_thong_ban_hang
         public IActionResult CreatePaymentUrl(int orderID)
         {
             Order order = _orderService.GetOrdersById(orderID);
-            // kiem tra order == null
             PaymentInformationModel model = new PaymentInformationModel();
-            model.Amount = order.Total;
-            model.OrderType = "electric";
-            model.Name = _UserService.GetUserById(order.UserID).UserName;
-            model.OrderDescription = order.OrderID.ToString();
+            if (order != null)
+            {
+                if (order.Status == 0)
+                {
+                    model.Amount = order.Total;
+                    model.OrderType = "110000";
+                    model.Name = _UserService.GetUserById(order.UserID).UserName;
+                    model.OrderDescription = order.OrderID.ToString();
+                }
+                else
+                {
+                    model.OrderDescription = "Trạng thái đơn hàng không hợp lệ";
+                    return Ok(model);
+                }
+            }
+            else
+            {
+                model.OrderDescription = "Đơn hàng không hợp lệ";
+                return Ok(model);
+            }
 
             var url = _vnPayService.CreatePaymentUrl(model, HttpContext);
 

@@ -24,10 +24,7 @@ namespace He_thong_ban_hang
             _orderService = service;
             _converter = converter;
         }
-        //public OrderController(IConverter converter)
-        //{
-        //    _converter = converter;
-        //}
+
         [HttpPost]
         [Route("[action]")]
         public IActionResult CreateOrder(List<OrderDetail> liOrderDetail, int userID)
@@ -59,6 +56,7 @@ namespace He_thong_ban_hang
             }
 
         }
+
         [HttpGet]
         [Route("[action]")]
         public IActionResult DisplayOrderStatus(int status)
@@ -75,6 +73,7 @@ namespace He_thong_ban_hang
             }
 
         }
+
         [HttpGet]
         [Route("[action]")]
         public IActionResult DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime)
@@ -91,7 +90,8 @@ namespace He_thong_ban_hang
             }
 
         }
-        [HttpPost]
+
+        [HttpPut]
         [Route("[action]")]
         public IActionResult SaveOrder(int quantity, int productID, int orderID, decimal price)
         {
@@ -105,7 +105,8 @@ namespace He_thong_ban_hang
                 return BadRequest();
             }
         }
-        [HttpPost]
+
+        [HttpPut]
         [Route("[action]")]
         public IActionResult DeleteOrder(int quantity, int productID, int orderID)
         {
@@ -217,11 +218,12 @@ namespace He_thong_ban_hang
                 var file = _converter.Convert(pdf);
                 return File(file, "application/pdf", "Orders.pdf");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null ;
             }
         }
+
         private string GenerateExportPDF(List<Order> Data)
         {
             var body = string.Empty;

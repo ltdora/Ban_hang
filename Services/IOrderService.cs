@@ -8,14 +8,73 @@ namespace He_thong_ban_hang
 {
     public interface IOrderService
     {
+        /// <summary>
+        /// Tạo đơn hàng
+        /// </summary>
+        /// <param name="orderDetails">Thông tin chi tiết của đơn hàng</param>
+        /// <param name="IdUser">Mã người dùng</param>
+        /// <returns>Dữ liệu kiểu BaseRespone cho biết công việc đã làm</returns>
         BaseRespone<Order> CreateOrder(List<OrderDetail>orderDetails,int IdUser);
+
+        /// <summary>
+        /// Hiển thị danh sách đơn hàng theo người dùng
+        /// </summary>
+        /// <param name="userID">Mã người dùng</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị danh sách đơn hàng theo người dùng</returns>
         BaseRespone<List<Order>> DisplayOrder(int userID);
+
+        /// <summary>
+        /// Hiển thị danh sách đơn hàng theo trạng thái thanh toán
+        /// </summary>
+        /// <param name="status">Trạng thái đơn hàng</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị danh sách đơn hàng theo trạng thái</returns>
         BaseRespone<List<Order>> DisplayOrderStatus(int status);
+
+        /// <summary>
+        /// Hiển thị danh sách đơn hàng theo trạng thái và khoảng thời gian
+        /// </summary>
+        /// <param name="status">Trạng thái đơn hàng</param>
+        /// <param name="startTime">Giới hạn thời gian đầu</param>
+        /// <param name="endTime">Giới hạn thời gian cuối</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị danh sách đơn dàng theo trạng thái và khoảng thời gian</returns>
         BaseRespone<List<Order>> DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         BaseRespone<List<Order>> DisplayExcelOrder();
-        Order GetOrdersById(int productID);
+
+        /// <summary>
+        /// Lấy thông tin đơn hàng theo mã đơn hàng
+        /// </summary>
+        /// <param name="orderID">Mã đơn hàng</param>
+        /// <returns>Thông tin đơn hàng dưới dạng Model Order</returns>
+        Order GetOrdersById(int orderID);
+
+        /// <summary>
+        /// Cập nhật thêm sản phẩm vào đơn hàng
+        /// </summary>
+        /// <param name="quantity">Số lượng sản phẩm</param>
+        /// <param name="productID">Mã sản phẩm</param>
+        /// <param name="orderID">Mã đơn hàng</param>
+        /// <param name="price">Giá sản phẩm</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị thông tin đơn hàng được cập nhật</returns>
         BaseRespone<Order> SaveOrder(int quantity, int productID, int orderID, decimal price);
+
+        /// <summary>
+        /// Cập nhật bớt sản phầm trong đơn hàng
+        /// </summary>
+        /// <param name="quantity">Số lượng</param>
+        /// <param name="productID">Mã sản phẩm</param>
+        /// <param name="orderID">Mã đơn hàng</param>
+        /// <returns>Dữ liệu kiểu BaseRespone hiển thị thông tin đơn hàng được cập nhật</returns>
         BaseRespone<Order> DeleteOrder(int quantity, int productID, int orderID);
+
+        /// <summary>
+        /// Hiển thị danh sách đơn hàng
+        /// </summary>
+        /// <returns>Danh sách đơn hàng dưới dạng List</returns>
         List<Order> GetOrderList();
     }
     public class OrderService : IOrderService
@@ -94,12 +153,12 @@ namespace He_thong_ban_hang
             }
             return orderDetail;
         }
-        public Order GetOrdersById(int productID)
+        public Order GetOrdersById(int orderID)
         {
             Order Order;
             try
             {
-                Order = _context.Find<Order>(productID);
+                Order = _context.Find<Order>(orderID);
             }
             catch (Exception)
             {
@@ -132,10 +191,6 @@ namespace He_thong_ban_hang
                 return response;
             }
         }
-        //public List<Order> GetOrdersWithinTimeFrame(int status, DateTime startTime, DateTime endTime)
-        //{
-        //    return _context.Orders.Where(o => o.CreatedTime >= startTime && o.CreatedTime <= endTime && o.Status == status).ToList();
-        //}
         public BaseRespone<List<Order>> DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime)
         {
             BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
@@ -257,7 +312,6 @@ namespace He_thong_ban_hang
                 bool isExist = false;
                 foreach(var item in liOrderDetail)
                 {
-                    //var orderDetail = _context.OrderDetails.FirstOrDefault(od => od.OrderID == orderID && od.ProductID == item.ProductID);
                     if (item.ProductID == productID)
                     {
                         item.Quantity = item.Quantity + quantity;

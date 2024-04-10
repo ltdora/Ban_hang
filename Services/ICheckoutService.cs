@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 namespace He_thong_ban_hang
 {
     public interface ICheckoutService
-    {/// <summary>
-    /// Thanh toan don hang
+    {
+    /// <summary>
+    /// Cập nhật trạng thái đơn hàng
     /// </summary>
-    /// <param name="orderID">ID don hang</param>
-    /// <param name="status">Trang thai don hang</param>
-    /// <returns></returns>
+    /// <param name="orderID">ID đơn hàng</param>
+    /// <param name="status">Trạng thái đơn hàng</param>
+    /// <returns>Dữ liệu kiểu BaseRespone hiển thị thông tin đơn hàng đã cập nhật trạng thái</returns>
         BaseRespone<Order> CheckoutOrder(int orderID, int status);
     }
     public class CheckoutService : ICheckoutService
@@ -26,10 +27,10 @@ namespace He_thong_ban_hang
             BaseRespone<Order> response = new BaseRespone<Order>();
             List<Order> ord = new List<Order>();
 
+            // Lấy đơn hàng theo orderID
             var liOrder = _context.Orders.Where(x => x.OrderID == orderID).ToList();
             try
             {
-
                 if (liOrder.Count != 0)
                 {
                     foreach (var item in liOrder)
@@ -52,9 +53,7 @@ namespace He_thong_ban_hang
                         response.Type = "Success";
                         response.Data = item;
 
-                        ord = _context.Orders.Where(x => x.OrderID == orderID).ToList();
-
-                        foreach (var itemDonHang in ord)
+                        foreach (var itemDonHang in liOrder)
                         {
                             itemDonHang.orderDetail = _context.OrderDetails.Where(e => e.OrderID == itemDonHang.OrderID).ToList();
                         }
