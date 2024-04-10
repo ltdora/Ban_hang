@@ -7,6 +7,10 @@ namespace He_thong_ban_hang
 {
     public interface IEmployeeService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         List<Employees> GetEmployeesList();
 
         Employees GetEmployeeDetailsById(int empId);

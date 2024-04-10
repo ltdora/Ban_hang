@@ -205,7 +205,7 @@ namespace He_thong_ban_hang
                 var objectSettings = new ObjectSettings
                 {
                     PagesCount = true,
-                    HtmlContent =  GenerateExportPDFNhatKyIn(lstOrder),
+                    HtmlContent =  GenerateExportPDF(lstOrder),
                     WebSettings = { DefaultEncoding = "utf-8" },
                 };
 
@@ -222,7 +222,7 @@ namespace He_thong_ban_hang
                 return null ;
             }
         }
-        private string GenerateExportPDFNhatKyIn(List<Order> Data)
+        private string GenerateExportPDF(List<Order> Data)
         {
             var body = string.Empty;
             var path = Path.Combine(Directory.GetCurrentDirectory(), "Template/HoaDon", "ListOrder.html");
@@ -236,10 +236,10 @@ namespace He_thong_ban_hang
                 string strHtml = "";
                 strHtml += "<div><table><tr> "
                             + "<th>STT</th>"
-                            + "<th>OrderID</th>"
-                            + "<th>UserID</th>"
-                            + "<th>Status</th>"
-                            + "<th>Total</th></tr>";
+                            + "<th>Mã đơn hàng</th>"
+                            + "<th>Mã khách hàng</th>"
+                            + "<th>Trạng thái đơn hàng</th>"
+                            + "<th>Tổng tiền</th></tr>";
                 foreach (var item in Data)
                 {
                     strHtml += "<tr><td>" + Stt + "</td>"

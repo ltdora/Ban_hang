@@ -13,6 +13,7 @@ namespace He_thong_ban_hang
         BaseRespone<List<Order>> DisplayOrderStatus(int status);
         BaseRespone<List<Order>> DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime);
         BaseRespone<List<Order>> DisplayExcelOrder();
+        Order GetOrdersById(int productID);
         BaseRespone<Order> SaveOrder(int quantity, int productID, int orderID, decimal price);
         BaseRespone<Order> DeleteOrder(int quantity, int productID, int orderID);
         List<Order> GetOrderList();

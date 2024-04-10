@@ -72,6 +72,7 @@ namespace He_thong_ban_hang
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<ICheckoutService, CheckoutService>();
+            services.AddScoped<IVnPayService, VnPayService>();
 
         }
 

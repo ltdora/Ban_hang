@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 namespace He_thong_ban_hang
 {
     public interface ICheckoutService
-    {
+    {/// <summary>
+    /// Thanh toan don hang
+    /// </summary>
+    /// <param name="orderID">ID don hang</param>
+    /// <param name="status">Trang thai don hang</param>
+    /// <returns></returns>
         BaseRespone<Order> CheckoutOrder(int orderID, int status);
     }
     public class CheckoutService : ICheckoutService
@@ -18,57 +23,57 @@ namespace He_thong_ban_hang
         }
         public BaseRespone<Order> CheckoutOrder(int orderID, int status)
         {
-            BaseRespone<Order> respone = new BaseRespone<Order>();
+            BaseRespone<Order> response = new BaseRespone<Order>();
             List<Order> ord = new List<Order>();
 
             var liOrder = _context.Orders.Where(x => x.OrderID == orderID).ToList();
             try
             {
 
-                if (liOrder == null)
+                if (liOrder.Count != 0)
                 {
-                    respone.Message = "Đơn hàng không tồn tại";
-                    return respone;
-                }
-                else
-                {
-                    foreach(var item in liOrder)
+                    foreach (var item in liOrder)
                     {
                         item.Status = status;
                         switch (status)
                         {
                             case 1:
-                                respone.Message = "Thanh toán đơn hàng thành công";
+                                response.Message = "Thanh toán đơn hàng thành công";
                                 break;
                             case 2:
-                                respone.Message = "Hủy đơn hàng thành công";
+                                response.Message = "Hủy đơn hàng thành công";
                                 break;
                             default:
                                 {
-                                    respone.Message = "Trạng thái đơn hàng không hợp lệ";
-                                    respone.Type = "Error";
-                                    return respone;
+                                    response.Message = "Trạng thái đơn hàng không hợp lệ";
+                                    return response;
                                 }
-                                break;
                         }
-                        respone.Data = item;
+                        response.Type = "Success";
+                        response.Data = item;
 
                         ord = _context.Orders.Where(x => x.OrderID == orderID).ToList();
 
                         foreach (var itemDonHang in ord)
-                    {
-                        itemDonHang.orderDetail = _context.OrderDetails.Where(e => e.OrderID == itemDonHang.OrderID).ToList();
-                    }
+                        {
+                            itemDonHang.orderDetail = _context.OrderDetails.Where(e => e.OrderID == itemDonHang.OrderID).ToList();
+                        }
                     }
                 }
+                else
+                {
+                    response.Message = "Đơn hàng không tồn tại";
+                    response.Type = "Success";
+                    return response;
+                }
                 _context.SaveChanges();
-                return respone;
+                return response;
             }
             catch(Exception ex)
             {
-                respone.Type = "Error";
-                respone.Message = ex.Message;
-                return respone;
+                response.Type = "Error";
+                response.Message = ex.Message;
+                return response;
             }
         }
     }
