@@ -25,15 +25,15 @@ namespace He_thong_ban_hang
         public BaseRespone<Order> CheckoutOrder(int orderID, int status)
         {
             BaseRespone<Order> response = new BaseRespone<Order>();
-            List<Order> ord = new List<Order>();
+            List<Order> orders = new List<Order>();
 
             // Lấy đơn hàng theo orderID
-            var liOrder = _context.Orders.Where(x => x.OrderID == orderID).ToList();
+            var lstOrder = _context.Orders.Where(x => x.OrderID == orderID).ToList();
             try
             {
-                if (liOrder.Count != 0)
+                if (lstOrder.Count != 0)
                 {
-                    foreach (var item in liOrder)
+                    foreach (var item in lstOrder)
                     {
                         item.Status = status;
                         switch (status)
@@ -53,7 +53,7 @@ namespace He_thong_ban_hang
                         response.Type = "Success";
                         response.Data = item;
 
-                        foreach (var itemDonHang in liOrder)
+                        foreach (var itemDonHang in lstOrder)
                         {
                             itemDonHang.orderDetail = _context.OrderDetails.Where(e => e.OrderID == itemDonHang.OrderID).ToList();
                         }

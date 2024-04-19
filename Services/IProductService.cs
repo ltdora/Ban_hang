@@ -16,16 +16,16 @@ namespace He_thong_ban_hang
         /// <summary>
         /// Lấy thông tin sản phẩm theo mã sản phẩm
         /// </summary>
-        /// <param name="proID">Mã sản phẩm</param>
+        /// <param name="productID">Mã sản phẩm</param>
         /// <returns>Thông tin sản phẩm dưới dạng Model Product</returns>
-        Products GetProductDetailsById(int proID);
+        Products GetProductDetailsById(int productID);
 
         /// <summary>
         /// Lấy thông tin sản phẩm theo tên
         /// </summary>
-        /// <param name="proName">Tên sản phẩm</param>
+        /// <param name="productName">Tên sản phẩm</param>
         /// <returns>Thông tin sản phẩm dưới dạng Model Product</returns>
-        List<Products> GetProductDetailsByName(string proName);
+        List<Products> GetProductDetailsByName(string productName);
 
         /// <summary>
         /// Cập nhật thêm thông tin sản phẩm
@@ -50,47 +50,47 @@ namespace He_thong_ban_hang
         }
         public List<Products> GetProductsList()
         {
-            List<Products> proList;
+            List<Products> lstProduct;
             try
             {
-                proList = _context.Set<Products>().ToList();
+                lstProduct = _context.Set<Products>().ToList();
             }
             catch (Exception)
             {
                 throw;
             }
-            return proList;
+            return lstProduct;
         }
-        public Products GetProductDetailsById(int proID)
+        public Products GetProductDetailsById(int productID)
         {
-            Products pro;
+            Products product;
             try
             {
-                pro = _context.Find<Products>(proID);
+                product = _context.Find<Products>(productID);
             }
             catch (Exception)
             {
                 throw;
             }
-            return pro;
+            return product;
         }
-        public List<Products> GetProductDetailsByName(string proName)
+        public List<Products> GetProductDetailsByName(string productName)
         {
-            List<Products> pro = new List<Products>();
+            List<Products> product = new List<Products>();
             try
             {
-                pro = _context.Products.Where(p => p.ProductName == proName).ToList();
+                product = _context.Products.Where(p => p.ProductName == productName).ToList();
                 //pro = _context.Set<Products>().ToList().Where(e => e.ProductName ==);
             }
             catch (Exception)
             {
                 throw;
             }
-            return pro;
+            return product;
         }
         public BaseRespone<Products> SaveProduct(Products productModel)
         {
-            BaseRespone<Products> respone = new BaseRespone<Products>();
+            BaseRespone<Products> response = new BaseRespone<Products>();
             try
             {
                 Products _temp = GetProductDetailsById(productModel.ProductID);
@@ -99,50 +99,50 @@ namespace He_thong_ban_hang
                     _temp.ProductName = productModel.ProductName;
                     _temp.ProductPrice = productModel.ProductPrice;
                     _context.Update<Products>(_temp);
-                    respone.Message = "Cập nhật thông tin sản phẩm thành công";
+                    response.Message = "Cập nhật thông tin sản phẩm thành công";
                 }
                 else
                 {
                     _context.Add<Products>(productModel);
-                    respone.Message = "Thêm sản phẩm thành công";
+                    response.Message = "Thêm sản phẩm thành công";
                 }
                 _context.SaveChanges();
-                respone.Data = productModel;
-                respone.Type = "Success";
+                response.Data = productModel;
+                response.Type = "Success";
             }
             catch (Exception ex)
             {
-                respone.Type = "Error";
-                respone.Message = "Error : " + ex.Message;
+                response.Type = "Error";
+                response.Message = "Error : " + ex.Message;
             }
-            return respone;
+            return response;
         }
         public BaseRespone<Products> DeleteProduct(int productID)
         {
-            BaseRespone<Products> respone = new BaseRespone<Products>();
+            BaseRespone<Products> response = new BaseRespone<Products>();
             try
             {
                 Products _temp = GetProductDetailsById(productID);
                 if (_temp != null)
                 {
-                    respone.Data = _temp;
+                    response.Data = _temp;
                     _context.Remove<Products>(_temp);
                     _context.SaveChanges();
-                    respone.Type = "Success";
-                    respone.Message = "Xoá sản phẩm thành công";
+                    response.Type = "Success";
+                    response.Message = "Xoá sản phẩm thành công";
                 }
                 else
                 {
-                    respone.Type = "Success";
-                    respone.Message = "Không tìm thấy sản phẩm";
+                    response.Type = "Success";
+                    response.Message = "Không tìm thấy sản phẩm";
                 }
             }
             catch (Exception ex)
             {
-                respone.Type = "Error";
-                respone.Message = "Error : " + ex.Message;
+                response.Type = "Error";
+                response.Message = "Error : " + ex.Message;
             }
-            return respone;
+            return response;
         }
     }
 }

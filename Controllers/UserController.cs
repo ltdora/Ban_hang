@@ -57,9 +57,9 @@ namespace He_thong_ban_hang
         {
             try
             {
-                var userdetail = _UserService.GetUserDetailsById(id);
-                if (userdetail == null) return NotFound();
-                return Ok(userdetail);
+                var userDetail = _UserService.GetUserDetailsById(id);
+                if (userDetail == null) return NotFound();
+                return Ok(userDetail);
             }
             catch (Exception)
             {

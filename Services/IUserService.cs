@@ -15,9 +15,9 @@ namespace He_thong_ban_hang
         /// <summary>
         /// Hiển thị thông tin người dùng theo mã người dùng
         /// </summary>
-        /// <param name="userId">Mã người dùng</param>
+        /// <param name="userID">Mã người dùng</param>
         /// <returns>Thông tin người dùng dưới dạng Model Users</returns>
-        Users  GetUserById(int userId);
+        Users  GetUserById(int userID);
 
         /// <summary>
         /// Hiển thị chi tiết thông tin đơn hàng theo mã người dùng
@@ -36,9 +36,9 @@ namespace He_thong_ban_hang
         /// <summary>
         /// Xóa người dùng theo mã người dùng
         /// </summary>
-        /// <param name="UserId">Mã người dùng</param>
+        /// <param name="UserID">Mã người dùng</param>
         /// <returns>Dữ liệu kiểu BaseRespone hiển thị thông tin người dùng bị xóa</returns>
-        BaseRespone<Users> DeleteUser(int UserId);
+        BaseRespone<Users> DeleteUser(int UserID);
 
         /// <summary>
         /// 
@@ -56,23 +56,23 @@ namespace He_thong_ban_hang
         }
         public List<Users> GetUsersList()
         {
-            List<Users> userList;
+            List<Users> lstUser;
             try
             {
-                userList = _context.Set<Users>().ToList();
+                lstUser = _context.Set<Users>().ToList();
             }
             catch (Exception)
             {
                 throw;
             }
-            return userList;
+            return lstUser;
         }
-        public Users GetUserById(int userId)
+        public Users GetUserById(int userID)
         {
             Users user;
             try
             {
-                user = _context.Find<Users>(userId);
+                user = _context.Find<Users>(userID);
             }
             catch (Exception)
             {
@@ -83,20 +83,20 @@ namespace He_thong_ban_hang
         public BaseRespone<List<Users>> GetUserDetailsById(int userID)
         {
             BaseRespone<List<Users>> response = new BaseRespone<List<Users>>();
-            List<Users> user = new List<Users>();
-            List<Order> ord = new List<Order>();
+            List<Users> users = new List<Users>();
+            List<Order> orders = new List<Order>();
             try
             {
-                user = _context.Uses.Where(x => x.UserId == userID).ToList();
-                if (user != null)
+                users = _context.Uses.Where(x => x.UserId == userID).ToList();
+                if (users != null)
                 {
-                    foreach (var itemOrder in user)
+                    foreach (var itemOrder in users)
                     {
                         itemOrder.order = _context.Orders.Where(x => x.UserID == itemOrder.UserId).ToList();
-                        ord = _context.Orders.Where(x => x.UserID == userID).ToList();
-                        if (ord != null)
+                        orders = _context.Orders.Where(x => x.UserID == userID).ToList();
+                        if (orders != null)
                         {
-                            foreach (var itemDonHang in ord)
+                            foreach (var itemDonHang in orders)
                             {
                                 itemDonHang.orderDetail = _context.OrderDetails.Where(e => e.OrderID == itemDonHang.OrderID).ToList();
                             }
@@ -104,7 +104,7 @@ namespace He_thong_ban_hang
                     }
                 }
 
-                response.Data = user;
+                response.Data = users;
                 response.Message = "Thành công";
                 return response;
             }
@@ -115,7 +115,7 @@ namespace He_thong_ban_hang
         }
         public BaseRespone<Users> SaveUser(Users UserModel)
         {
-            BaseRespone<Users> respone = new BaseRespone<Users>();
+            BaseRespone<Users> response = new BaseRespone<Users>();
             try
             {
                 Users _temp = GetUserById(UserModel.UserId);
@@ -124,30 +124,30 @@ namespace He_thong_ban_hang
                     _temp.UserName = UserModel.UserName;
                     _temp.UserPassword = UserModel.UserPassword;
                     _context.Update<Users>(_temp);
-                    respone.Message = "Cập nhật thông tin người dùng thành công";
+                    response.Message = "Cập nhật thông tin người dùng thành công";
                 }
                 else
                 {
                     _context.Add<Users>(UserModel);
-                    respone.Message = "Thêm người dùng thành công";
+                    response.Message = "Thêm người dùng thành công";
                 }
                 _context.SaveChanges();
-                respone.Data = UserModel;
-                respone.Type = "Success";
+                response.Data = UserModel;
+                response.Type = "Success";
             }
             catch (Exception ex)
             {
-                respone.Type = "Error";
-                respone.Message = "Error : " + ex.Message;
+                response.Type = "Error";
+                response.Message = "Error : " + ex.Message;
             }
-            return respone;
+            return response;
         }
-        public BaseRespone<Users> DeleteUser(int UserId)
+        public BaseRespone<Users> DeleteUser(int UserID)
         {
             BaseRespone<Users> response = new BaseRespone<Users>();
             try
             {
-                Users _temp = GetUserById(UserId);
+                Users _temp = GetUserById(UserID);
                 if (_temp != null)
                 {
                     response.Data = _temp;
@@ -172,16 +172,16 @@ namespace He_thong_ban_hang
         public Users LogInUser(LogInRequest model)
         {
             {
-                Users userList = new Users();
+                Users lstUser = new Users();
                 try
                 {
-                    userList = _context.Uses.Where(e => e.UserName == model.UserName && e.UserPassword == model.UserPassword).FirstOrDefault();
+                    lstUser = _context.Uses.Where(e => e.UserName == model.UserName && e.UserPassword == model.UserPassword).FirstOrDefault();
                 }
                 catch (Exception)
                 {
                     throw;
                 }
-                return userList;
+                return lstUser;
             }
         }
     }

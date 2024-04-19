@@ -86,26 +86,26 @@ namespace He_thong_ban_hang
         }
         public BaseRespone<Order> CreateOrder(List<OrderDetail> orderDetails, int userID)
         {
-            BaseRespone<Order> respone = new BaseRespone<Order>();
+            BaseRespone<Order> response = new BaseRespone<Order>();
             
             try
             {
-                var liProID = orderDetails.Select(e => e.ProductID).ToList();  ///1,2,3,4,5,6,2
+                var lstProID = orderDetails.Select(e => e.ProductID).ToList();  ///1,2,3,4,5,6,2
 
-                foreach(var item in liProID)
+                foreach(var item in lstProID)
                 {
                     var checkCoSp = _context.Products.Where(i => i.ProductID == item).ToList();
                     if (checkCoSp == null)
                     {
-                        respone.Message = "Lỗi chứa sản phẩm không hợp lệ";
-                        return respone;
+                        response.Message = "Lỗi chứa sản phẩm không hợp lệ";
+                        return response;
                     }
                     
                     var checkTrungSP = orderDetails.Where(e => e.ProductID == item).ToList().Count();
                     if (checkTrungSP > 1)
                     {
-                        respone.Message = "Lỗi sản phẩm trùng";
-                        return respone;
+                        response.Message = "Lỗi sản phẩm trùng";
+                        return response;
                     }
 
                 }
@@ -113,7 +113,6 @@ namespace He_thong_ban_hang
                 order.Status = 0;
                 order.UserID = userID;
                 order.CreatedTime = DateTime.Now;
-                //order.Total = orderDetails.Sum(s => s.Price * s.Quantity);
                 foreach (var i in orderDetails)
                 {
                     i.OrderID = order.OrderID;
@@ -129,15 +128,15 @@ namespace He_thong_ban_hang
 
                 _context.AddRange(orderDetails);
                 _context.SaveChanges();
-                respone.Message = "Mua hàng thành công";
-                respone.Data = order;
-                return respone;
+                response.Message = "Mua hàng thành công";
+                response.Data = order;
+                return response;
             }
             catch (Exception ex)
             {
-                respone.Type = "Error";
-                respone.Message = ex.Message;
-                return respone;
+                response.Type = "Error";
+                response.Message = ex.Message;
+                return response;
             }
         }
         public OrderDetail GetOrderDetailsById(int productID)
@@ -155,32 +154,32 @@ namespace He_thong_ban_hang
         }
         public Order GetOrdersById(int orderID)
         {
-            Order Order;
+            Order order;
             try
             {
-                Order = _context.Find<Order>(orderID);
+                order = _context.Find<Order>(orderID);
             }
             catch (Exception)
             {
                 throw;
             }
-            return Order;
+            return order;
         }
         public BaseRespone<List<Order>> DisplayOrder(int userID)
         {
             BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
-            List<Order> ord = new List<Order>();
+            List<Order> orders = new List<Order>();
             try
             {
-                ord = _context.Orders.Where(x => x.UserID == userID).ToList();
-                if (ord != null)
+                orders = _context.Orders.Where(x => x.UserID == userID).ToList();
+                if (orders != null)
                 {
-                    foreach (var itemDonHang in ord)
+                    foreach (var itemDonHang in orders)
                     {
                         itemDonHang.orderDetail = _context.OrderDetails.Where(e => e.OrderID == itemDonHang.OrderID).ToList();
                     }
                 }
-                response.Data = ord;
+                response.Data = orders;
                 response.Message = "Thành công";
                 return response;
             }
@@ -194,13 +193,13 @@ namespace He_thong_ban_hang
         public BaseRespone<List<Order>> DisplayOrderStatusTime(int status, DateTime startTime, DateTime endTime)
         {
             BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
-            var ordertime = _context.Orders.Where(o => o.CreatedTime >= startTime && o.CreatedTime <= endTime && o.Status == status).ToList();
+            var orderTime = _context.Orders.Where(o => o.CreatedTime >= startTime && o.CreatedTime <= endTime && o.Status == status).ToList();
             decimal total = 0;
             try
             {
-                if (ordertime != null)
+                if (orderTime != null)
                 {
-                    foreach (var item in ordertime)
+                    foreach (var item in orderTime)
                     {
                         item.orderDetail = _context.OrderDetails.Where(e => e.OrderID == item.OrderID).ToList();
                         total = total + item.Total;
@@ -222,7 +221,7 @@ namespace He_thong_ban_hang
                         response.Message = "Trạng thái đơn hàng không hợp lệ";
                         break;
                 }
-                response.Data = ordertime;
+                response.Data = orderTime;
                
                 return response;
             }
@@ -236,20 +235,20 @@ namespace He_thong_ban_hang
         public BaseRespone<List<Order>> DisplayOrderStatus(int status)
         {
             BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
-            List<Order> ord = new List<Order>();
+            List<Order> orders = new List<Order>();
             decimal total = 0;
             try
             {
-                ord = _context.Orders.Where(x => x.Status == status).ToList();
-                if(ord != null)
+                orders = _context.Orders.Where(x => x.Status == status).ToList();
+                if(orders != null)
                 {
-                    foreach(var item in ord)
+                    foreach(var item in orders)
                     {
                         item.orderDetail = _context.OrderDetails.Where(e => e.OrderID == item.OrderID).ToList();
                         total = total + item.Total;
                     }
                 }
-                response.Data = ord;
+                response.Data = orders;
                 switch (status)
                 {
                     case 0:
@@ -277,12 +276,12 @@ namespace He_thong_ban_hang
         public BaseRespone<List<Order>> DisplayExcelOrder()
         {
             BaseRespone<List<Order>> response = new BaseRespone<List<Order>>();
-            List<Order> ord = new List<Order>();
+            List<Order> orders = new List<Order>();
             try
             {
-                ord = _context.Orders.ToList();
+                orders = _context.Orders.ToList();
                 
-                response.Data = ord;
+                response.Data = orders;
                 response.Message = "Thành công";
                 return response;
             }
@@ -296,11 +295,11 @@ namespace He_thong_ban_hang
         public BaseRespone<Order> SaveOrder(int quantity, int productID, int orderID, decimal price)
         {
             BaseRespone<Order> response = new BaseRespone<Order>();
-            var liOrderDetail = _context.OrderDetails.Where(x => x.OrderID == orderID).ToList();
-            var liOrderID = _context.Orders.Select(x => x.OrderID).ToList();
+            var lstOrderDetail = _context.OrderDetails.Where(x => x.OrderID == orderID).ToList();
+            var lstOrderID = _context.Orders.Select(x => x.OrderID).ToList();
             try
             {
-                foreach(var item in liOrderID)
+                foreach(var item in lstOrderID)
                 {
                     var checkOrderID = _context.Orders.Where(x => x.OrderID == item).ToList();
                     if(checkOrderID == null)
@@ -310,7 +309,7 @@ namespace He_thong_ban_hang
                     }
                 }
                 bool isExist = false;
-                foreach(var item in liOrderDetail)
+                foreach(var item in lstOrderDetail)
                 {
                     if (item.ProductID == productID)
                     {
@@ -352,7 +351,7 @@ namespace He_thong_ban_hang
             try
             {
                 BaseRespone<Order> response = new BaseRespone<Order>();
-                var liOrderDetail = _context.OrderDetails.Where(x => x.OrderID == orderID).ToList();
+                var lstOrderDetail = _context.OrderDetails.Where(x => x.OrderID == orderID).ToList();
 
                 var checkOrderID = _context.Orders.Where(x => x.OrderID == orderID).ToList();
                 if (checkOrderID == null)
@@ -362,7 +361,7 @@ namespace He_thong_ban_hang
                 }
 
                 bool isExist = false;
-                foreach (var item in liOrderDetail)
+                foreach (var item in lstOrderDetail)
                 {
                     if(item.ProductID == productID)
                     {
@@ -377,8 +376,6 @@ namespace He_thong_ban_hang
                         {
                             if (item.Quantity == quantity)
                             {
-                                //var _temp = GetOrderDetailsById(productID);
-                                //_context.Remove<OrderDetail>(_temp);
                                 _context.Remove<OrderDetail>(item);
                                 order.Total = order.Total - quantity * item.Price;
                                 _context.Update<Order>(order);
@@ -420,16 +417,16 @@ namespace He_thong_ban_hang
         }
         public List<Order> GetOrderList()
         {
-            List<Order> liorder;
+            List<Order> lstOrder;
             try
             {
-                liorder = _context.Set<Order>().ToList();
+                lstOrder = _context.Set<Order>().ToList();
             }
             catch (Exception)
             {
                 throw;
             }
-            return liorder;
+            return lstOrder;
         }
     }
 }

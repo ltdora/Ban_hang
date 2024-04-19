@@ -46,9 +46,9 @@ namespace He_thong_ban_hang
         {
             try
             {
-                var ord = _orderService.DisplayOrder(userID);
-                if (ord == null) return NotFound();
-                return Ok(ord);
+                var orders = _orderService.DisplayOrder(userID);
+                if (orders == null) return NotFound();
+                return Ok(orders);
             }
             catch (Exception)
             {
@@ -63,9 +63,9 @@ namespace He_thong_ban_hang
         {
             try
             {
-                var ord = _orderService.DisplayOrderStatus(status);
-                if (ord == null) return NotFound();
-                return Ok(ord);
+                var orders = _orderService.DisplayOrderStatus(status);
+                if (orders == null) return NotFound();
+                return Ok(orders);
             }
             catch (Exception)
             {
@@ -80,9 +80,9 @@ namespace He_thong_ban_hang
         {
             try
             {
-                var ord = _orderService.DisplayOrderStatusTime(status, startTime, endTime);
-                if (ord == null) return NotFound();
-                return Ok(ord);
+                var orders = _orderService.DisplayOrderStatusTime(status, startTime, endTime);
+                if (orders == null) return NotFound();
+                return Ok(orders);
             }
             catch (Exception)
             {
@@ -91,7 +91,7 @@ namespace He_thong_ban_hang
 
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("[action]")]
         public IActionResult SaveOrder(int quantity, int productID, int orderID, decimal price)
         {
@@ -106,7 +106,7 @@ namespace He_thong_ban_hang
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("[action]")]
         public IActionResult DeleteOrder(int quantity, int productID, int orderID)
         {
